@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Switch, NavLink, withRouter } from "react-router-dom";
 import ProductList from "./components/ProductList";
 import Homepage from "./components/Homepage";
+import ProductDetail from "./components/ProductDetail";
 
 class App extends Component {
   state = {
@@ -53,6 +54,9 @@ class App extends Component {
           </nav>
         </div>
         <Switch>
+          <Route path="/products/:productId">
+            <ProductDetail productList={this.state.productList} />
+          </Route>
           <Route path="/products">
             <ProductList productList={this.state.productList} />
           </Route>
