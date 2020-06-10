@@ -1,8 +1,15 @@
 import React from "react";
 import ProductSummary from "./ProductSummary";
+import ProductDetail from "./ProductDetail";
+import { Switch, Route } from "react-router-dom";
 
 function ProductList(props) {
   return (
+    <Switch>
+      <Route path="/products/:productId">
+        <ProductDetail productList={props.productList}/>
+      </Route>
+      <Route path="/products">
     <div className="productList">
       <h2>Our Products</h2>
       <ul>
@@ -11,6 +18,8 @@ function ProductList(props) {
         ))}
       </ul>
     </div>
+    </Route>
+    </Switch>
   );
 }
 
