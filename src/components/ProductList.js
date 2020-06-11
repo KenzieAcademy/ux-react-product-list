@@ -1,9 +1,16 @@
 import React from "react";
 import ProductSummary from "./ProductSummary";
+import ProductDetail from "./ProductDetail"
+import {Switch, Route, withRouter} from "react-router-dom"
 
 function ProductList(props) {
   return (
-    <div className="productList">
+    <Switch>
+      <Route path="/products/:productId">
+        <ProductDetail productList={props.productList}/>
+      </Route>
+      <Route path="/products">
+      <div className="productList">
       <h2>Our Products</h2>
       <ul>
         {props.productList.map((product) => (
@@ -11,7 +18,11 @@ function ProductList(props) {
         ))}
       </ul>
     </div>
+      </Route>
+    </Switch>
+
   );
 }
 
-export default ProductList;
+export default withRouter(ProductList);
+
