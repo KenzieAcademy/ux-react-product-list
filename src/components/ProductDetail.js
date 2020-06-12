@@ -1,9 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 class ProductDetail extends Component {
   state = {
-    product: {},
+    product: this.getProductFromList(),
+  }; 
+  
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps){
+      this.setState({product: this.getProductFromList()})
+    }
+  }
+
+  getProductFromList() {
+    const productId = parseInt(this.props.match.params.productId)
+    return this.props.productList.find(item => item.id === productId) || {}
   };
   render() {
     return (
@@ -19,4 +31,4 @@ class ProductDetail extends Component {
   }
 }
 
-export default ProductDetail;
+export default withRouter(ProductDetail);
