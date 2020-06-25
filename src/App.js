@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch, NavLink, withRouter } from "react-router-dom";
+import {BrowserRouter, Route, Switch, NavLink, withRouter } from "react-router-dom";
 import ProductList from "./components/ProductList";
 import Homepage from "./components/Homepage";
 
@@ -42,6 +42,7 @@ class App extends Component {
 
   render() {
     return (
+      <BrowserRouter>
       <div className="App">
         <div>
           <h1>Welcome to Kenzie Hardware!</h1>
@@ -61,6 +62,7 @@ class App extends Component {
           </Route>
         </Switch>
       </div>
+      </BrowserRouter>
     );
   }
 }
